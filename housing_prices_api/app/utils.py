@@ -1,3 +1,34 @@
+import joblib
+
+def scaler_values(values):
+    """
+    Función para escalar los valores de características.
+    
+    :param values: Valores de características a escalar.
+    :return: Valores de características escalados.
+    """
+    # Cargar el scaler
+    scaler = joblib.load('scaler/robust_scaler_X.joblib')
+    # Convertir el diccionario a una lista ordenada de valores
+    values_list = list(values.values())
+
+    # Escalar los valores
+    return scaler.transform([values_list])
+
+
+def scaler_predict(predict):
+    """
+    Función para escalar la predicción de precios.
+    
+    :param predict: Predicción de precios a escalar.
+    :return: Predicción de precios escalada.
+    """
+    # Cargar el scaler
+    scaler = joblib.load('scaler/robust_scaler_y.joblib')
+
+    # Escalar la predicción
+    return scaler.inverse_transform(predict)
+
 def calculate_features(features):
     """
     Función para calcular características faltantes basadas en las características proporcionadas.
@@ -62,8 +93,8 @@ def calculate_features(features):
     if log_area is None and area:
         log_area = area * 0.1  # Estimación, ajusta según lo necesario
     
-    # Retornar las características completas
-    return {
+    # Retornar las características completas y transformadas
+    values = {
         'area': area,
         'bedrooms': bedrooms,
         'bathrooms': bathrooms,
@@ -86,3 +117,5 @@ def calculate_features(features):
         'log_price': log_price,
         'log_area': log_area
     }
+
+    return scaler_values(values)

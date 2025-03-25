@@ -7,6 +7,7 @@ WORKDIR /app
 # Copiar los archivos necesarios al contenedor
 COPY requirements.txt .
 COPY models/ /models/ 
+COPY scaler/ /scaler/ 
 COPY app /app/
 
 # Instalar las dependencias

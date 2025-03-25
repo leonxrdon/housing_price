@@ -1,0 +1,44 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.pdb
+*.log
+
+# Entornos virtuales
+venv/
+env/
+ENV/
+.venv/
+
+# Archivos de configuración
+instance/
+*.db
+*.sqlite3
+
+# Archivos de dependencias
+Pipfile.lock
+*.egg-info/
+.eggs/
+
+# IDEs
+.vscode/
+.idea/
+
+# Archivos de distribución
+dist/
+build/
+*.tar.gz
+
+# Archivos de pruebas
+.tox/
+.nox/
+.coverage
+nosetests.xml
+coverage.xml
+*.cover
+
+# Docker
+Dockerfile
+docker-compose

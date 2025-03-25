@@ -1,7 +1,7 @@
 import logging
 from flask import Blueprint, jsonify, request
 from app.model import predict_price
-from app.utils import calculate_features
+from app.utils import calculate_features, scaler_predict
 import numpy as np
 
 # Configurar el logger
@@ -37,18 +37,15 @@ def predict():
     
     # Intentar hacer la predicción
     try:
-        prediction = predict_price(list(complete_features.values()))
-        
-        # Asegurarse de que la predicción sea un valor serializable
-        if isinstance(prediction, np.ndarray):
-            prediction = prediction.item()
-            # Invertir el Robuster
-            prediction = np.exp(prediction)
-        
+        prediction = predict_price(list(complete_features()))
+        prediction = scaler_predict(prediction)
+
     except Exception as e:
         logger.error(f"Error al hacer la predicción: {str(e)}")
         return jsonify({'error': f'Prediction failed: {str(e)}'}), 500
     
     # Retornar la predicción
     logger.info(f"Predicción: {prediction}")
+    # Scaler
+    logger.info(f"Predicción escalada: {prediction}")
     return jsonify({'predicted_price': prediction})
