@@ -37,100 +37,119 @@
                         <!-- Columna 1 -->
                         <div class="col-md-6 mb-3">
                             <label for="area" class="form-label">Área (m²):</label>
-                            <input type="number" id="area" name="area" class="form-control" value="7420" required>
+                            <input type="number" id="area" name="area" class="form-control" value="" required>
                         </div>
                 
                         <div class="col-md-6 mb-3">
                             <label for="bedrooms" class="form-label">Habitaciones:</label>
-                            <input type="number" id="bedrooms" name="bedrooms" class="form-control" value="4" required>
+                            <input type="number" id="bedrooms" name="bedrooms" class="form-control" value="" required>
                         </div>
                 
                         <div class="col-md-6 mb-3">
                             <label for="bathrooms" class="form-label">Baños:</label>
-                            <input type="number" id="bathrooms" name="bathrooms" class="form-control" value="2" required>
+                            <input type="number" id="bathrooms" name="bathrooms" class="form-control" value="" required>
                         </div>
                 
                         <div class="col-md-6 mb-3">
                             <label for="stories" class="form-label">Pisos:</label>
-                            <input type="number" id="stories" name="stories" class="form-control" value="3" required>
+                            <input type="number" id="stories" name="stories" class="form-control" value="" required>
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label for="parking" class="form-label">Estacionamiento:</label>
-                            <input type="number" id="parking" name="parking" class="form-control" value="2" required>
+                            <input type="number" id="parking" name="parking" class="form-control" value="" required>
                         </div>
                 
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Cerca de carretera principal:</label>
-                            <div>
-                                <input type="radio" id="mainroad_yes" name="mainroad" value="1" class="form-check-input" checked>
+                            <div class="form-check">
+                                <input type="radio" id="mainroad_yes" name="mainroad" class="form-check-input" value="1" checked>
                                 <label for="mainroad_yes" class="form-check-label">Sí</label>
                             </div>
-                            <div>
-                                <input type="radio" id="mainroad_no" name="mainroad" value="0" class="form-check-input">
+                            <div class="form-check">
+                                <input type="radio" id="mainroad_no" name="mainroad" class="form-check-input" value="0">
                                 <label for="mainroad_no" class="form-check-label">No</label>
                             </div>
                         </div>
                 
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Habitación de invitados:</label>
-                            <div>
-                                <input type="radio" id="guestroom_yes" name="guestroom" value="1" class="form-check-input">
+                            <div class="form-check">
+                                <input type="radio" id="guestroom_yes" name="guestroom" class="form-check-input" value="1">
                                 <label for="guestroom_yes" class="form-check-label">Sí</label>
                             </div>
-                            <div>
-                                <input type="radio" id="guestroom_no" name="guestroom" value="0" class="form-check-input" checked>
+                            <div class="form-check">
+                                <input type="radio" id="guestroom_no" name="guestroom"  class="form-check-input" value="0" checked>
                                 <label for="guestroom_no" class="form-check-label">No</label>
                             </div>
                         </div>
                 
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Sótano:</label>
-                            <div>
-                                <input type="radio" id="basement_yes" name="basement" value="1" class="form-check-input">
+                            <div class="form-check">
+                                <input type="radio" id="basement_yes" name="basement" class="form-check-input" value="1">
                                 <label for="basement_yes" class="form-check-label">Sí</label>
                             </div>
-                            <div>
-                                <input type="radio" id="basement_no" name="basement" value="0" class="form-check-input" checked>
+                            <div class="form-check">
+                                <input type="radio" id="basement_no" name="basement" class="form-check-input" value="0" checked>
                                 <label for="basement_no" class="form-check-label">No</label>
                             </div>
                         </div>
                 
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Aire acondicionado:</label>
-                            <div>
-                                <input type="radio" id="airconditioning_yes" name="airconditioning" value="1" class="form-check-input">
+                            <div class="form-check">
+                                <input type="radio" id="airconditioning_yes" name="airconditioning" class="form-check-input" value="1">
                                 <label for="airconditioning_yes" class="form-check-label">Sí</label>
                             </div>
-                            <div>
-                                <input type="radio" id="airconditioning_no" name="airconditioning" value="0" class="form-check-input" checked>
+                            <div class="form-check">
+                                <input type="radio" id="airconditioning_no" name="airconditioning" class="form-check-input" value="0" checked>
                                 <label for="airconditioning_no" class="form-check-label">No</label>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Calefacción con agua caliente:</label>
+                            <div class="form-check">
+                                <input type="radio" id="hotwaterheating_yes" name="hotwaterheating" class="form-check-input" value="1">
+                                <label for="hotwaterheating_yes" class="form-check-label">Sí</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" id="hotwaterheating_no" name="hotwaterheating" class="form-check-input" value="0" checked>
+                                <label for="hotwaterheating_no" class="form-check-label">No</label>
                             </div>
                         </div>
                 
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Área preferencial:</label>
-                            <div>
-                                <input type="radio" id="prefarea_yes" name="prefarea" value="1" class="form-check-input" checked>
+                            <div class="form-check">
+                                <input type="radio" id="prefarea_yes" name="prefarea" class="form-check-input" value="1" checked>
                                 <label for="prefarea_yes" class="form-check-label">Sí</label>
                             </div>
-                            <div>
-                                <input type="radio" id="prefarea_no" name="prefarea" value="0" class="form-check-input">
+                            <div class="form-check">
+                                <input type="radio" id="prefarea_no" name="prefarea" class="form-check-input" value="0">
                                 <label for="prefarea_no" class="form-check-label">No</label>
                             </div>
                         </div>
                 
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Amueblado:</label>
-                            <div>
-                                <input type="radio" id="furnishingstatus_furnished" name="furnishingstatus_furnished" value="1" class="form-check-input" checked>
-                                <label for="furnishingstatus_furnished" class="form-check-label">Sí</label>
+                            <div class="form-check">
+                                <input type="radio" id="furnishingstatus_furnished" name="furnishingstatus" class="form-check-input" value="1">
+                                <label for="furnishingstatus_furnished" class="form-check-label">Amueblado</label>
                             </div>
-                            <div>
-                                <input type="radio" id="furnishingstatus_unfurnished" name="furnishingstatus_furnished" value="0" class="form-check-input">
-                                <label for="furnishingstatus_unfurnished" class="form-check-label">No</label>
+                            <div class="form-check">
+                                <input type="radio" id="furnishingstatus_semi-furnished" name="furnishingstatus" class="form-check-input" value="2">
+                                <label for="furnishingstatus_semi-furnished" class="form-check-label">Semi Amueblado</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" id="furnishingstatus_unfurnished" name="furnishingstatus" class="form-check-input" value="0">
+                                <label for="furnishingstatus_unfurnished" class="form-check-label">Sin Amueblar</label>
                             </div>
                         </div>
+                        
+                        
                     </div>
                     <button type="submit" class="btn btn-success w-100">Predecir Precio</button>
                 </form>                
@@ -152,15 +171,23 @@
 
             const formData = new FormData(this);
             const features = {};
+
+            // Capturando las opciones de amueblado de manera independiente
+            features['furnishingstatus_furnished'] = parseInt(formData.get('furnishingstatus_furnished') || 0);
+            features['furnishingstatus_semi_furnished'] = parseInt(formData.get('furnishingstatus_semi-furnished') || 0);
+            features['furnishingstatus_unfurnished'] = parseInt(formData.get('furnishingstatus_unfurnished') || 0);
+
+
             formData.forEach((value, key) => {
                 features[key] = parseInt(value);
             });
+
 
             const payload = {
                 features: features
             };
 
-            fetch('http://127.0.0.1:5001/api/predict', {
+            fetch('http://127.0.0.1:5003/api/predict', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -182,13 +209,12 @@
                 }
             })
             .catch(error => {
-                document.getElementById('predictedPrice').innerText = 'Hubo un error en la solicitud.';
+                document.getElementById('predictedPrice').innerText = 'Hubo un error en la solicitud.' + error;
                 document.getElementById('result').classList.remove('alert-info');
                 document.getElementById('result').classList.add('alert-danger');
                 document.getElementById('result').style.display = 'block';
             });
         });
     </script>
-
 </body>
 </html>

@@ -9,8 +9,8 @@ def scaler_values(values):
     """
     # Cargar el scaler
     scaler = joblib.load('scaler/robust_scaler_X.joblib')
-    # Convertir el diccionario a una lista ordenada de valores
-    values_list = list(values.values())
+    # Convertir el diccionario a una lista
+    values_list = [values[key] for key in values.keys()]
 
     # Escalar los valores
     return scaler.transform([values_list])
@@ -25,9 +25,9 @@ def scaler_predict(predict):
     """
     # Cargar el scaler
     scaler = joblib.load('scaler/robust_scaler_y.joblib')
-
+    predict_scaler = scaler.inverse_transform(predict)
     # Escalar la predicción
-    return scaler.inverse_transform(predict)
+    return float(predict_scaler[0][0])
 
 def calculate_features(features):
     """
@@ -38,60 +38,32 @@ def calculate_features(features):
     """
     
     # Asignar valores predeterminados si no están presentes
-    area = features.get('area', None)
-    bedrooms = features.get('bedrooms', None)
-    bathrooms = features.get('bathrooms', None)
-    stories = features.get('stories', 0)
-    mainroad = features.get('mainroad', 0)
-    guestroom = features.get('guestroom', 0)
-    basement = features.get('basement', 0)
-    hotwaterheating = features.get('hotwaterheating', 0)
-    airconditioning = features.get('airconditioning', 0)
-    parking = features.get('parking', 0)
-    prefarea = features.get('prefarea', 0)
-    furnishingstatus_semi_furnished = features.get('furnishingstatus_semi-furnished', 0)
-    furnishingstatus_unfurnished = features.get('furnishingstatus_unfurnished', 0)
-    furnishingstatus_furnished = features.get('furnishingstatus_furnished', 0)
-    
+    area = int(features.get('area', 0))  # Si 'area' no está presente, usa 0 por defecto
+    bedrooms = int(features.get('bedrooms', 0))  # Igual para otras características
+    bathrooms = int(features.get('bathrooms', 0))
+    stories = int(features.get('stories', 0))
+    parking = int(features.get('parking', 0))
+    mainroad = int(features.get('mainroad', 0)) 
+    guestroom = int(features.get('guestroom', 0)) 
+    basement = int(features.get('basement', 0)) 
+    hotwaterheating = int(features.get('hotwaterheating', 0))
+    airconditioning = int(features.get('airconditioning', 0))
+    prefarea = int(features.get('prefarea', 0)) 
+    furnishingstatus_furnished = int(features.get('furnishingstatus_furnished', 0)) 
+    furnishingstatus_semi_furnished = int(features.get('furnishingstatus_semi-furnished', 0)) 
+    furnishingstatus_unfurnished = int(features.get('furnishingstatus_unfurnished', 0)) 
+
     # Cálculos de características faltantes o derivados
-    
-    # Área por habitación
-    area_per_room = features.get('area_per_room', None)
-    if area_per_room is None and area and bedrooms:
-        area_per_room = area / bedrooms  # Cálculo: área por habitación
-    
-    # Baños por habitación
-    bath_per_bed = features.get('bath_per_bed', None)
-    if bath_per_bed is None and bathrooms and bedrooms:
-        bath_per_bed = bathrooms / bedrooms  # Cálculo: baños por habitación
-    
-    # Área por piso
-    area_per_story = features.get('area_per_story', None)
-    if area_per_story is None and area and stories:
-        area_per_story = area / stories  # Cálculo: área por piso
-    
-    # Área por estacionamiento
-    area_per_parking = features.get('area_per_parking', None)
-    if area_per_parking is None and area and parking:
-        area_per_parking = area / parking  # Cálculo: área por estacionamiento
+    area_per_room = area / bedrooms if area and bedrooms else 0
+    bath_per_bed = bathrooms / bedrooms if bathrooms and bedrooms else 0
+    area_per_story = area / stories if area and stories else 0
+    area_per_parking = area / parking if area and parking else 0
     
     # Amenities totales (por ejemplo, suma de características booleanas)
-    total_amenities = features.get('total_amenities', None)
-    if total_amenities is None:
-        total_amenities = sum([
+    total_amenities = sum([
             mainroad, guestroom, basement, hotwaterheating, airconditioning, prefarea,
             furnishingstatus_semi_furnished, furnishingstatus_unfurnished, furnishingstatus_furnished
         ])
-    
-    # Log del precio (valor arbitrario si falta)
-    log_price = features.get('log_price', None)
-    if log_price is None and area:
-        log_price = area * 0.1  # Estimación, ajusta según lo necesario
-    
-    # Log del área (valor arbitrario si falta)
-    log_area = features.get('log_area', None)
-    if log_area is None and area:
-        log_area = area * 0.1  # Estimación, ajusta según lo necesario
     
     # Retornar las características completas y transformadas
     values = {
@@ -113,9 +85,7 @@ def calculate_features(features):
         'bath_per_bed': bath_per_bed,
         'area_per_story': area_per_story,
         'area_per_parking': area_per_parking,
-        'total_amenities': total_amenities,
-        'log_price': log_price,
-        'log_area': log_area
+        'total_amenities': total_amenities  
     }
-
-    return scaler_values(values)
+    print(values)
+    return values
