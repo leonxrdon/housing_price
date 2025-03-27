@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 from app.utils import scaler_values
 
-from flask_cors import CORS  # Agregar esta línea
+from flask_cors import CORS
 
 # Configurar el logger
 logging.basicConfig(level=logging.INFO)
@@ -33,7 +33,7 @@ def predict():
     
     # Obtener las características
     features = data['features']
-    
+
     # Calcular las características faltantes
     complete_features = calculate_features(features)
     scaler_features = scaler_values(complete_features)

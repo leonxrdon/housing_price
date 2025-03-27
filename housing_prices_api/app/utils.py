@@ -49,9 +49,20 @@ def calculate_features(features):
     hotwaterheating = int(features.get('hotwaterheating', 0))
     airconditioning = int(features.get('airconditioning', 0))
     prefarea = int(features.get('prefarea', 0)) 
-    furnishingstatus_furnished = int(features.get('furnishingstatus_furnished', 0)) 
-    furnishingstatus_semi_furnished = int(features.get('furnishingstatus_semi-furnished', 0)) 
-    furnishingstatus_unfurnished = int(features.get('furnishingstatus_unfurnished', 0)) 
+    furnishingstatus = features.get('furnishingstatus', '')
+
+    if furnishingstatus == 'semi-furnished':
+        furnishingstatus_unfurnished = 0
+        furnishingstatus_semi_furnished = 1
+        furnishingstatus_furnished = 0 
+    elif furnishingstatus == 'furnished':
+        furnishingstatus_furnished = 1
+        furnishingstatus_semi_furnished = 0
+        furnishingstatus_unfurnished = 0
+    else:
+        furnishingstatus_furnished = 0
+        furnishingstatus_semi_furnished = 0
+        furnishingstatus_unfurnished = 1
 
     # Cálculos de características faltantes o derivados
     area_per_room = area / bedrooms if area and bedrooms else 0
@@ -61,8 +72,9 @@ def calculate_features(features):
     
     # Amenities totales (por ejemplo, suma de características booleanas)
     total_amenities = sum([
-            mainroad, guestroom, basement, hotwaterheating, airconditioning, prefarea,
-            furnishingstatus_semi_furnished, furnishingstatus_unfurnished, furnishingstatus_furnished
+        mainroad, guestroom,
+        basement, hotwaterheating,
+        airconditioning, prefarea,
         ])
     
     # Retornar las características completas y transformadas
@@ -87,5 +99,4 @@ def calculate_features(features):
         'area_per_parking': area_per_parking,
         'total_amenities': total_amenities  
     }
-    print(values)
     return values

@@ -133,23 +133,14 @@
                             </div>
                         </div>
                 
-                        <div class="col-md-6 mb-3">
+                        <div class=" col-md-6 mb-3">
                             <label class="form-label">Amueblado:</label>
-                            <div class="form-check">
-                                <input type="radio" id="furnishingstatus_furnished" name="furnishingstatus" class="form-check-input" value="1">
-                                <label for="furnishingstatus_furnished" class="form-check-label">Amueblado</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="radio" id="furnishingstatus_semi-furnished" name="furnishingstatus" class="form-check-input" value="2">
-                                <label for="furnishingstatus_semi-furnished" class="form-check-label">Semi Amueblado</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="radio" id="furnishingstatus_unfurnished" name="furnishingstatus" class="form-check-input" value="0">
-                                <label for="furnishingstatus_unfurnished" class="form-check-label">Sin Amueblar</label>
-                            </div>
+                            <select class="form-control" name="furnishingstatus">
+                                <option value="furnished">Amueblado</option>
+                                <option value="semi-furnished">Semi Amueblado</option>
+                                <option value="unfurnished">Sin Amueblar</option>
+                            </select>
                         </div>
-                        
-                        
                     </div>
                     <button type="submit" class="btn btn-success w-100">Predecir Precio</button>
                 </form>                
@@ -171,17 +162,9 @@
 
             const formData = new FormData(this);
             const features = {};
-
-            // Capturando las opciones de amueblado de manera independiente
-            features['furnishingstatus_furnished'] = parseInt(formData.get('furnishingstatus_furnished') || 0);
-            features['furnishingstatus_semi_furnished'] = parseInt(formData.get('furnishingstatus_semi-furnished') || 0);
-            features['furnishingstatus_unfurnished'] = parseInt(formData.get('furnishingstatus_unfurnished') || 0);
-
-
             formData.forEach((value, key) => {
-                features[key] = parseInt(value);
+                features[key] = value;
             });
-
 
             const payload = {
                 features: features
